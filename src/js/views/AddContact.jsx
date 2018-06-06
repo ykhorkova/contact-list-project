@@ -13,7 +13,8 @@ export default class AddContact extends Flux.View {
             name: '',
             address: '',
             phone: '',
-            email: ''
+            email: '',
+            edit : false
         };
         this.bindStore(MyStore, () => {
             console.log('the bind works!');
@@ -24,6 +25,11 @@ export default class AddContact extends Flux.View {
     
     componentDidMount(){
         const contacts = MyStore.getContacts();
+        if (this.props.match.params.user_email){
+            this.setState({
+                edit: true
+            });
+        }
         contacts.forEach((item) => {
             if(item.email == this.props.match.params.user_email){
                 this.setState({
@@ -39,7 +45,7 @@ export default class AddContact extends Flux.View {
         return (
             <div className="container">
                 <div>
-                    <h1 className="text-center mt-5">Add a new contact</h1>
+                    <h1 className="text-center mt-5">{this.state.edit ? "Edit contact" : "Add a contact"}</h1>
                     <form>
                         <div className="form-group">
                             <label>Full Name</label>
@@ -47,7 +53,7 @@ export default class AddContact extends Flux.View {
                         </div>
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="email" className="form-control" placeholder="Enter email"  onChange={(e) => this.setState({ email: e.target.value})} value={this.state.email}/>
+                            <input readOnly={this.state.edit ? "readonly" : ""} type="email" className="form-control" placeholder="Enter email"  onChange={(e) => this.setState({ email: e.target.value})} value={this.state.email}/>
                         </div>
                         <div className="form-group">
                             <label>Phone</label>
@@ -66,7 +72,7 @@ export default class AddContact extends Flux.View {
                                     address: this.state.address
                                 };
                         
-                                if(this.props.match.params.user_email) ContactActions.editContact(updatedContact); 
+                                if(this.state.edit) ContactActions.editContact(updatedContact); 
                                 else ContactActions.addContact(updatedContact);
                             }
                         }

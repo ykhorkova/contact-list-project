@@ -22,14 +22,16 @@ class ContactActions extends Flux.Action{
         this.dispatch('MyStore.setContacts',updatedContacts);
     }
     
-    editContact(){
+    editContact(updatedContact){
         console.log('edit action!');
         let contacts = MyStore.getContacts();
         
-        let updatedContact = contacts.map(function() {
-            if (contacts.email != email){
-                return updatedContact;
-        }
+        contacts.forEach((element) => {
+            if (element.email === updatedContact.email) {
+                element.name = updatedContact.name;
+                element.phone = updatedContact.phone;
+                element.address = updatedContact.address;
+            }
         
         });
         console.log(updatedContact);
