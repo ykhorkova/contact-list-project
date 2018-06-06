@@ -5,7 +5,6 @@ class ContactActions extends Flux.Action{
     
     addContact(incomingContact){
         console.log('Add contact action!');
-        
         let contacts = MyStore.getContacts();
         contacts.push(incomingContact);
         
@@ -22,22 +21,22 @@ class ContactActions extends Flux.Action{
         this.dispatch('MyStore.setContacts',updatedContacts);
     }
     
+    editContact(updatedContact){
+        console.log('edit action!');
+        let contacts = MyStore.getContacts();
+        // if (contacts.email != email) {
+            
+        // }
+        
+       
+        console.log(contactWasChanged);
+        this.dispatch('MyStore.setContacts',contacts);
+
+        
+            
+    }
+    
 }
 export default new ContactActions();
 
 
-
-
-
-
-
-
- // contactDelete(value){
-
-    //     this.setState({
-    //         contacts:this.state.contacts.filter((element,index) => {
-    //               return index != value;
-    //       })
-           
-    //   });
-    // }
