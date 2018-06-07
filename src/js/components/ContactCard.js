@@ -16,7 +16,7 @@ class ContactCard extends React.Component{
             <li className="list-group-item">
                 <div className="row w-100">
                     <div className="col-12 col-sm-6 col-md-3 px-0">
-                        <img src={this.props.image} className="rounded-circle mx-auto d-block img-fluid" />
+                        <img src="https://www.petmd.com/sites/default/files/small-kitten-walking-towards_127900829_0.jpg" className="rounded-circle mx-auto d-block img-fluid" />
                     </div>
                     <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
                         <div className=" float-right">

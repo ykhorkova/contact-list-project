@@ -14,7 +14,7 @@ export default class AddContact extends Flux.View {
             address: '',
             phone: '',
             email: '',
-            edit : false
+            edit : false,
         };
         this.bindStore(MyStore, () => {
             console.log('the bind works!');
@@ -64,7 +64,6 @@ export default class AddContact extends Flux.View {
                             <input type="text" className="form-control" placeholder="Enter address"  onChange={(e) => this.setState({ address: e.target.value})} value={this.state.address}/>
                         </div>
                         <button onClick={() => {
-                        
                                 let updatedContact = {
                                     name: this.state.name,
                                     phone: this.state.phone,
@@ -72,8 +71,14 @@ export default class AddContact extends Flux.View {
                                     address: this.state.address
                                 };
                         
+                            if ( this.state.name != "" && this.state.phone != "" && this.state.email  != "" && this.state.address != ""){
+                                
                                 if(this.state.edit) ContactActions.editContact(updatedContact); 
                                 else ContactActions.addContact(updatedContact);
+                                
+                            }
+                                
+                            
                             }
                         }
                             type="button" className="btn btn-primary form-control">save</button>
