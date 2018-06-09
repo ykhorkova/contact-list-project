@@ -29,8 +29,8 @@ class Modal extends React.Component{
                             <p>If you delete this thing the entire universe will go down!</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Oh no!</button>
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Yes baby!</button>
+                            <button type="button" className="btn btn-primary" onClick={() => this.props.onCancel()}>Oh no!</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.props.onConfirm()}>Yes baby!</button>
                         </div>
                     </div>
                 </div>
@@ -46,6 +46,8 @@ class Modal extends React.Component{
 Modal.propTypes = {
     history: PropTypes.object,
     onClose: PropTypes.func,
+    onConfirm: PropTypes.func,
+    onCancel: PropTypes.func,
     show: PropTypes.bool
 };
 
@@ -55,6 +57,8 @@ Modal.propTypes = {
 **/
 Modal.defaultProps = {
   show: false,
-  onClose: null
+  onClose: null,
+  onConfirm: null,
+  onCancel: null
 };
 export default withRouter(Modal);

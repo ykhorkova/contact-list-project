@@ -30,17 +30,30 @@ export default class Contacts extends Flux.View {
         });
     }
     
+    deleteContact(){
+        MyActions.deleteContact(this.state.contactDelete.email);
+        this.setState({
+           contactDelete: null,
+           showModal: false
+        });
+    }
+    
     render() {
             const contactsInHtml = this.state.contacts.map((contact,i) => {
                 return <ContactCard
-                key={i} 
-                name={contact.name}
-                phone={contact.phone}
-                email={contact.email}
-                address={contact.address}
-                image={contact.image}
-                id={i}
-                onDelete={(p) => MyActions.deleteContact(p)}/>;
+                            key={i} 
+                            name={contact.name}
+                            phone={contact.phone}
+                            email={contact.email}
+                            address={contact.address}
+                            image={contact.image}
+                            id={i}
+                            onDelete={(p) => {
+                                this.setState({
+                                    showModal: true,
+                                    contactDelete: contact
+                                });
+                            }}/>;
                 });     
         return(
             <div className="container">
@@ -54,12 +67,8 @@ export default class Contacts extends Flux.View {
                         </ul>
                     </div>
                 </div>
-                <Modal show={this.state.showModal} onClose={() => this.setState({showModal: false})} />
+                <Modal show={this.state.showModal} onClose={() => this.setState({showModal: false})} onConfirm={() => this.deleteContact()} onCancel={() => this.setState({showModal: false})} />
             </div>
         );
     }
 }
-
-                // Contacts 
-                // {name: 'John Smith', phone: '267-123-1567', email: 'john@gmail.com', address: '23 Stirling St', image: 'https://randomuser.me/api/portraits/men/7.jpg'},
-                // {name: 'Alberto Bell', phone: '954-665-4444', email: 'alberto@gmail.com', address: '55 Sheridan St', image: 'https://randomuser.me/api/portraits/men/9.jpg'}
