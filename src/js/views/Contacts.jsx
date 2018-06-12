@@ -17,6 +17,17 @@ export default class Contacts extends Flux.View {
             showModal: false,
             contacts: []
         };
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((contacts) => {
+                this.setState({contacts: contacts});
+            }) 
+            .catch((error) => {
+                console.log("There was an error ", error);
+    });
     }
 
     componentDidMount(){
@@ -38,6 +49,7 @@ export default class Contacts extends Flux.View {
         });
     }
     
+    
     render() {
             const contactsInHtml = this.state.contacts.map((contact,i) => {
                 return <ContactCard
@@ -45,7 +57,7 @@ export default class Contacts extends Flux.View {
                             name={contact.name}
                             phone={contact.phone}
                             email={contact.email}
-                            address={contact.address}
+                            address={contact.address.street + " " + contact.address.city+ " " + contact.address.zipcode}
                             image={contact.image}
                             id={i}
                             onDelete={(p) => {
