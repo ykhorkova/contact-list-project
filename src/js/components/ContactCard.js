@@ -20,8 +20,8 @@ class ContactCard extends React.Component{
                     </div>
                     <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
                         <div className=" float-right">
-                            <button className="btn" onClick={() => this.props.history.push('/edit/'+this.props.email)}><i className="fas fa-pencil-alt mr-3"></i></button>
-                            <button className="btn" onClick={() => this.props.onDelete(this.props.email)}><i className="fas fa-trash-alt"></i></button>
+                            <button className="btn" onClick={() => this.props.history.push('/edit/'+this.props.id)}><i className="fas fa-pencil-alt mr-3"></i></button>
+                            <button className="btn" onClick={() => this.props.onDelete(this.props.id)}><i className="fas fa-trash-alt"></i></button>
                         </div>
                         <label className="name lead">{this.props.full_name}</label>
                         <br /> 

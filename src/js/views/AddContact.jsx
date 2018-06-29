@@ -26,13 +26,13 @@ export default class AddContact extends Flux.View {
     
     componentDidMount(){
         const contacts = MyStore.getContacts();
-        if (this.props.match.params.user_email){
+        if (this.props.match.params.user_id){
             this.setState({
                 edit: true
             });
         }
         contacts.forEach((item) => {
-            if(item.email == this.props.match.params.user_email){
+            if(item.id == this.props.match.params.user_id){
                 this.setState({
                     full_name: item.full_name,
                     phone: item.phone,
