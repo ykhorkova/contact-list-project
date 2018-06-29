@@ -10,10 +10,11 @@ export default class AddContact extends Flux.View {
         super();
         
         this.state = {
-            name: '',
+            full_name: '',
             address: '',
             phone: '',
             email: '',
+            id: '',
             edit : false,
         };
         this.bindStore(MyStore, () => {
@@ -33,10 +34,11 @@ export default class AddContact extends Flux.View {
         contacts.forEach((item) => {
             if(item.email == this.props.match.params.user_email){
                 this.setState({
-                    name: item.name,
+                    full_name: item.full_name,
                     phone: item.phone,
                     email: item.email,
-                    address: item.address
+                    address: item.address,
+                    id: item.id
                 });
             }
         });
@@ -49,7 +51,7 @@ export default class AddContact extends Flux.View {
                     <form>
                         <div className="form-group">
                             <label>Full Name</label>
-                            <input type="text" className="form-control" placeholder="Full Name" onChange={(e) => this.setState({ name: e.target.value})} value={this.state.name} />
+                            <input type="text" className="form-control" placeholder="Full Name" onChange={(e) => this.setState({ full_name: e.target.value})} value={this.state.full_name} />
                         </div>
                         <div className="form-group">
                             <label>Email</label>
@@ -65,13 +67,14 @@ export default class AddContact extends Flux.View {
                         </div>
                         <button onClick={() => {
                                 let updatedContact = {
-                                    name: this.state.name,
+                                    full_name: this.state.full_name,
                                     phone: this.state.phone,
                                     email: this.state.email,
-                                    address: this.state.address
+                                    address: this.state.address,
+                                    id: this.state.id
                                 };
                         
-                            if ( this.state.name != "" && this.state.phone != "" && this.state.email  != "" && this.state.address != ""){
+                            if ( this.state.full_name != "" && this.state.phone != "" && this.state.email  != "" && this.state.address != ""){
                                 
                                 if(this.state.edit) ContactActions.editContact(updatedContact); 
                                 else ContactActions.addContact(updatedContact);
