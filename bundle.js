@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7a30e5f816319eeec862"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "57051d0cfabead2539ad"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -44723,7 +44723,7 @@ function _interopRequireDefault(obj) {
 
 //include bootstrap npm library into the bundle
 //import react into the bundle
-console.log('Version 1');
+console.log('Version 1.01');
 
 //render your react application
 
