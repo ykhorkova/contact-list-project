@@ -16,7 +16,7 @@ export default class Layout extends Flux.View {
     render() {
         return (
             <div>
-                <BrowserRouter>
+                <BrowserRouter basename="/contact-list-project/">
                     <div>
                         <Switch>
                             <Route exact path="/index.html" component={Contacts} />
