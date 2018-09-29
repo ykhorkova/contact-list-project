@@ -5,7 +5,7 @@ class ContactActions extends Flux.Action{
     
     constructor(){
         super();
-        this.host = 'https://python-contact-list-ykhorkova.c9users.io';
+        this.host = 'https://desolate-spire-58605.herokuapp.com';
     }
     
     getContacts(){
